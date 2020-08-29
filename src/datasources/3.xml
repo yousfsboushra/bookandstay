@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <hotels>
+      <element>
+         <name>Hotel A</name>
+         <rooms>
+            <element>
+               <code>DBL-TWN</code>
+               <name>Double or Twin SUPERIOR</name>
+               <net_rate>143.00</net_rate>
+               <taxes>
+                  <element>
+                     <amount>10.00</amount>
+                     <currency>EUR</currency>
+                     <type>TAXESANDFEES</type>
+                  </element>
+               </taxes>
+               <totalPrice>153.00</totalPrice>
+            </element>
+            <element>
+               <code>HF-BD</code>
+               <name>HALF BOARD</name>
+               <net_rate>131.00</net_rate>
+               <taxes>
+                  <element>
+                     <amount>11.00</amount>
+                     <currency>EUR</currency>
+                     <type>TAXESANDFEES</type>
+                  </element>
+               </taxes>
+               <totalPrice>142.00</totalPrice>
+            </element>
+            <element>
+               <code>QN-RM</code>
+               <name>Queen Room</name>
+               <net_rate>140</net_rate>
+               <taxes>
+                  <element>
+                     <amount>12.00</amount>
+                     <currency>EUR</currency>
+                     <type>TAXESANDFEES</type>
+                  </element>
+                  <element>
+                     <amount>4.00</amount>
+                     <currency>EUR</currency>
+                     <type>EXTRA_FEES</type>
+                  </element>
+               </taxes>
+               <totalPrice>156.00</totalPrice>
+            </element>
+         </rooms>
+         <stars>4</stars>
+      </element>
+      <element>
+         <name>Hotel B</name>
+         <rooms>
+            <element>
+               <code>DBL-RM</code>
+               <name>Double Room</name>
+               <net_rate>152.00</net_rate>
+               <taxes>
+                  <element>
+                     <amount>15.00</amount>
+                     <currency>EUR</currency>
+                     <type>TAXESANDFEES</type>
+                  </element>
+               </taxes>
+               <totalPrice>167.00</totalPrice>
+            </element>
+            <element>
+               <code>HF-BOD</code>
+               <name>HALF BOARD</name>
+               <net_rate>135.00</net_rate>
+               <taxes>
+                  <element>
+                     <amount>8.00</amount>
+                     <currency>EUR</currency>
+                     <type>TAXESANDFEES</type>
+                  </element>
+                  <element>
+                     <amount>4.00</amount>
+                     <currency>EUR</currency>
+                     <type>EXTRA_FEES</type>
+                  </element>
+               </taxes>
+               <totalPrice>147.00</totalPrice>
+            </element>
+            <element>
+               <code>QUN-ROM</code>
+               <name>Queen Room</name>
+               <net_rate>140.00</net_rate>
+               <taxes>
+                  <element>
+                     <amount>6.50</amount>
+                     <currency>EUR</currency>
+                     <type>EXTRA_FEES</type>
+                  </element>
+               </taxes>
+               <totalPrice>146.50</totalPrice>
+            </element>
+         </rooms>
+         <stars>5</stars>
+      </element>
+      <element>
+         <name>Hotel C</name>
+         <rooms>
+            <element>
+               <code>SNG-RM</code>
+               <name>Single Bed</name>
+               <net_rate>96.00</net_rate>
+               <taxes>
+                  <element>
+                     <amount>12.00</amount>
+                     <currency>EUR</currency>
+                     <type>TAXESANDFEES</type>
+                  </element>
+               </taxes>
+               <totalPrice>108.00</totalPrice>
+            </element>
+            <element>
+               <code>FUBOD</code>
+               <name>FULL BOARD</name>
+               <net_rate>165.00</net_rate>
+               <taxes>
+                  <element>
+                     <amount>15.00</amount>
+                     <currency>EUR</currency>
+                     <type>TAXESANDFEES</type>
+                  </element>
+               </taxes>
+               <totalPrice>180.00</totalPrice>
+            </element>
+            <element>
+               <code>LUX-ROM</code>
+               <name>Luxury Room</name>
+               <net_rate>177.00</net_rate>
+               <taxes>
+                  <element>
+                     <amount>22.00</amount>
+                     <currency>EUR</currency>
+                     <type>TAXESANDFEES</type>
+                  </element>
+               </taxes>
+               <totalPrice>199.00</totalPrice>
+            </element>
+         </rooms>
+         <stars>5</stars>
+      </element>
+   </hotels>
+</root>

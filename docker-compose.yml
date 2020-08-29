@@ -1,38 +1,8 @@
 version: "3.2"
 services:
-  db:
-    image: mysql:5.7
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    ports:
-      - 3307:3306
-    volumes:
-      - ./db:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: 5AKP74U9JvGdrhDL
-      MYSQL_DATABASE: bookandstay
   web:
     build: .
     ports:
-      - 9000:8080
-    volumes: # to be commented later to fix storage permissions issue
-      - ./:/var/www
-    depends_on:
-      - db
-    environment:
-      PORT: 8080
-      APP_NAME: "Book and Stay"
-      APP_ENV: local
-      APP_DEBUG: "true"
-      APP_KEY: Rt2VwmiNlBEL4nFYvcp1J2qKjO6vViocBKCIDBalmxQ
-      APP_URL: http://localhost
-      APP_TIMEZONE: UTC
-      LOG_CHANNEL: stack
-      DB_CONNECTION: mysql
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_DATABASE: bookandstay
-      DB_USERNAME: root
-      DB_PASSWORD: 5AKP74U9JvGdrhDL
-      CACHE_DRIVER: file
-      QUEUE_CONNECTION: sync
+      - 9000:80
+    volumes:
+      - ./src:/var/www/html
