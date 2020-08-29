@@ -1,5 +1,5 @@
 # Book and Stay
 
-### **I decided to use lumen.**
+-   As an end user, I'm only interested in the final room price so I decided to only use the final prices and discard the net and tax.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching. [*Copied from Lumen read me file*]
+-

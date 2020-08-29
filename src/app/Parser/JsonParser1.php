@@ -21,17 +21,8 @@ Class JsonParser1 implements Parser{
             foreach($data->hotels as $hotel){
                 if(!empty($hotel->rooms)){
                     foreach($hotel->rooms as $room){
-                        $rooms[str_replace(" ", "-", $hotel->name) . "_" . $room->code] = array(
-                            "code" => $room->code,
-                            "name" => "",
-                            "hotel" => array(
-                                "name" => $hotel->name,
-                                "stars" => $hotel->stars,
-                            ),
-                            "prices" => array(
-                                $sourceName => $room->totalPrice
-                            )
-                        );
+                        $hotelObject = \App\Models\Hotel::createInstance($hotel->name, $hotel->stars);
+                        \App\Models\Room::createInstance($room->name, $room->code, $hotelObject, $room->totalPrice, $sourceName);
                     }
                 }
             }

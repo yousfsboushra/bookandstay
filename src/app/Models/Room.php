@@ -6,45 +6,47 @@ class Room{
     private $code;
     private $hotel;
     private $prices;
+    private $minPrice;
+    private static $instances = array();
 
-
-    public function __construct(string $name, string $code, Hotel $hotel, $price){
+    private function __construct(string $name, string $code, Hotel $hotel, float $price, string $sourceName){
         $this->name = $name;
         $this->code = $code;
         $this->hotel = $hotel;
-        $this->prices = array($price);
+        $this->minPrice = $price;
+        $this->prices = array(
+            $sourceName => $price
+        );
     }
 
-    public function getName(){
-        return $this->name;
+    public static function createInstance(string $name, string $code, Hotel $hotel, float $price, string $sourceName){
+        $roomIndex = str_replace(" ", "-", $hotel->getName()) . "_" . $code;
+        if(isset(self::$instances[$roomIndex])){
+            self::$instances[$roomIndex]->setName($name);
+            self::$instances[$roomIndex]->addPrice($price, $sourceName);
+
+        }else{
+            self::$instances[$roomIndex] = new Static($name, $code, $hotel, $price, $sourceName);
+        }
     }
 
-    public function getCode(){
-        return $this->code;
+    public function setName(string $name){
+        if(!empty($name)){
+            $this->name = $name;
+        }
     }
 
-    public function getHotel(){
-        return $this->hotel;
+    public function addPrice(float $price, string $sourceName){
+        if(!empty($sourceName) && is_numeric($price)){
+            $this->prices[$sourceName] = $price;
+            if($price < $this->minPrice){
+                $this->minPrice = $price;
+            }
+        }
     }
 
-    public function getPrices(){
-        return $this->prices;
-    }
-
-    public function setName($name){
-        $this->name = $name;
-    }
-
-    public function setCode($code){
-        $this->code = $code;
-    }
-
-    public function setHotel($hotel){
-        $this->hotel = $hotel;
-    }
-
-    public function addPrice($price){
-        $this->prices[] = $price;
+    public static function getRooms(){
+        return self::$instances;
     }
 
 }

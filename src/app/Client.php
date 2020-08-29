@@ -39,7 +39,7 @@ class Client{
         foreach($this->readers as $index => $reader){
             $data = $reader->read();
             $data = $this->parsers[$index]->parseRooms($data, $this->inputs[$index]->name);
-            print_r($data);
         }
+        print_r(\App\Models\Room::getRooms());
     }
 }

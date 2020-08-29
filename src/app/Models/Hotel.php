@@ -5,24 +5,22 @@ class Hotel{
     private $name;
     private $stars;
 
-    public function __construct($name, $stars){
+    private static $instances = array();
+
+    private function __construct(string $name, int $stars){
         $this->name = $name;
         $this->stars = $stars;
+    }
+
+    public static function createInstance(string $name, int $stars){
+        $hotelIndex = str_replace(" ", "-", $name);
+        if(!isset(self::$instances[$hotelIndex])){
+            self::$instances[$hotelIndex] = new Static($name, $stars);
+        }
+        return self::$instances[$hotelIndex];
     }
 
     public function getName(){
         return $this->name;
-    }
-
-    public function getStars(){
-        return $this->stars;
-    }
-
-    public function setName($name){
-        $this->name = $name;
-    }
-
-    public function setStars($stars){
-        $this->stars = $stars;
     }
 }
