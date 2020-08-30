@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Models;
 
 class Room{
@@ -47,6 +49,10 @@ class Room{
 
     public static function getRooms(){
         return self::$instances;
+    }
+
+    public function getMinPrice(){
+        return $this->minPrice;
     }
 
 }

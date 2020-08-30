@@ -1,6 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Parser;
+
+use App\Models\Hotel;
+use App\Models\Room;
 
 Class JsonParser2 implements Parser{
     private static $instance = null;
@@ -21,8 +25,8 @@ Class JsonParser2 implements Parser{
             foreach($data->hotels as $hotel){
                 if(!empty($hotel->rooms)){
                     foreach($hotel->rooms as $room){
-                        $hotelObject = \App\Models\Hotel::createInstance($hotel->name, $hotel->stars);
-                        \App\Models\Room::createInstance("", $room->code, $hotelObject, $room->total, $sourceName);
+                        $hotelObject = Hotel::createInstance($hotel->name, $hotel->stars);
+                        Room::createInstance($room->name, $room->code, $hotelObject, floatval($room->totalPrice), $sourceName);
                     }
                 }
             }

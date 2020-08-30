@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Parser;
 
@@ -14,7 +15,7 @@ Class XmlParser1 implements Parser{
         return self::$instance;
     }
 
-    public function parseRooms($xml){
+    public function parseRooms($xml){ // Not complete
         $rooms = array();
         $json = json_encode(simplexml_load_string($xml));
         return $rooms;

@@ -1,21 +1,27 @@
 <?php
+declare(strict_types=1);
 
 namespace App;
+
+use App\DataSorter\Sorter;
+use App\Models\Room;
 
 class Client{
     private $inputs = array();
     private $readers = array();
     private $parsers = array();
+    private $sorter;
 
-    public function __construct($inputsJson){
-        $this->inputs = json_decode($inputsJson);
+    public function __construct($inputs, Sorter $sorter){
+        $this->inputs = $inputs;
+        $this->sorter = $sorter;
     }
 
     public function createReadersAndParsers(){
         foreach($this->inputs as $input){
             switch($input->source){
                 case 'api':
-                    $this->readers[] = new \App\DataReader\ApiReader($input->endpoint);
+                    $this->readers[] = new \App\DataReader\ApiReader($input->endpoint, $input->headers);
                 break;
                 case 'file':
                     $this->readers[] = new \App\DataReader\FileReader($input->path);
@@ -40,6 +46,7 @@ class Client{
             $data = $reader->read();
             $data = $this->parsers[$index]->parseRooms($data, $this->inputs[$index]->name);
         }
-        print_r(\App\Models\Room::getRooms());
+        $rooms = Room::getRooms();
+        return $this->sorter->sort($rooms);
     }
 }

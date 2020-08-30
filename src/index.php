@@ -1,20 +1,34 @@
 <?php
+declare(strict_types=1);
+
+use App\Client;
+use App\DataSorter\PriceSorter;
+
 require __DIR__ . '/vendor/autoload.php';
 
 $inputsJson = '[
     {
-        "source": "api",
-        "name": "Booking.com",
-        "endpoint": "http://localhost/apiReaderExample.json",
-        "type": "json1"
-    },{
         "source": "file",
         "name": "Airbnb.com",
         "path": "datasources/1.json",
+        "type": "json1"
+    },
+    {
+        "source": "file",
+        "name": "Airbnb.com2",
+        "path": "datasources/2.json",
+        "type": "json2"
+    },
+    {
+        "source": "api",
+        "name": "Booking.com",
+        "endpoint": "http://localhost/apiReaderExample.json",
+        "headers": {},
         "type": "json2"
     }
 ]';
-
-$client = new App\Client($inputsJson);
+$priceSorter = new PriceSorter();
+$client = new Client(json_decode($inputsJson), $priceSorter);
 $client->createReadersAndParsers();
-$client->readAndFilterRooms();
+$rooms = $client->readAndFilterRooms();
+print_r($rooms);
