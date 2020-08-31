@@ -31,4 +31,5 @@ $priceSorter = new PriceSorter();
 $client = new Client(json_decode($inputsJson), $priceSorter);
 $client->createReadersAndParsers();
 $rooms = $client->readAndFilterRooms();
-print_r($rooms);
+// print_r($rooms);
+print json_encode($rooms);
