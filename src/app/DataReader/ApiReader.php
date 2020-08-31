@@ -8,8 +8,8 @@ Class ApiReader implements Reader{
     private $headers;
 
     public function __construct($endpoint, $headers){
-        $this->endpoint = $endpoint;
-        $this->headers = $headers;
+        $this->endpoint = (isset($endpoint))? $endpoint : "";
+        $this->headers = (isset($headers))? $headers : array();
     }
 
     public function read(){

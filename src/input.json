@@ -6,12 +6,6 @@
         "type": "json1"
     },
     {
-        "source": "file",
-        "name": "Airbnb.com2",
-        "path": "datasources/2.json",
-        "type": "json2"
-    },
-    {
         "source": "api",
         "name": "Booking.com",
         "endpoint": "http://localhost/apiReaderExample.json",

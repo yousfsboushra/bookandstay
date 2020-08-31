@@ -15,39 +15,44 @@ class Client{
     private $formatter;
 
     public function __construct($jsonInput, Sorter $sorter, Formatter $formatter){
-        $this->inputs = json_decode($jsonInput);
+        $this->createReadersAndParsers($jsonInput);
         $this->sorter = $sorter;
         $this->formatter = $formatter;
-        $this->createReadersAndParsers(); // To be moved outside the class
     }
 
-    public function createReadersAndParsers(){
-        if(!empty($this->inputs)){
-            foreach($this->inputs as $input){
-                switch($input->source){
-                    case 'api':
-                        $this->readers[] = new \App\DataReader\ApiReader($input->endpoint, $input->headers);
-                    break;
-                    case 'file':
-                        $this->readers[] = new \App\DataReader\FileReader($input->path);
-                    break;
-                }
-                switch($input->type){
-                    case 'json1':
-                        $this->parsers[] = \App\Parser\JsonParser1::getInstance();
-                    break;
-                    case 'json2':
-                        $this->parsers[] = \App\Parser\JsonParser2::getInstance();
-                    break;
+    public function createReadersAndParsers($jsonInput){
+        $inputs = json_decode($jsonInput);
+        if(!empty($inputs)){
+            foreach($inputs as $input){
+                if(isset($input->source) && isset($input->type)){
+                    $this->inputs[] = $input;
+                    switch($input->source){
+                        case 'api':
+                            $this->readers[] = new \App\DataReader\ApiReader($input->endpoint, $input->headers);
+                        break;
+                        case 'file':
+                            $this->readers[] = new \App\DataReader\FileReader($input->path);
+                        break;
+                    }                
+                    switch($input->type){
+                        case 'json1':
+                            $this->parsers[] = \App\Parser\JsonParser1::getInstance();
+                        break;
+                        case 'json2':
+                            $this->parsers[] = \App\Parser\JsonParser2::getInstance();
+                        break;
+                    }
                 }
             }
         }
     }
 
     public function readFilterAndSortRooms(){
-        foreach($this->readers as $index => $reader){
-            $data = $reader->read();
-            $data = $this->parsers[$index]->parseRooms($data, $this->inputs[$index]->name);
+        if(!empty($this->inputs)){
+            foreach($this->inputs as $index => $input){
+                $data = $this->readers[$index]->read();
+                $this->parsers[$index]->parseRooms($data, $input->name);
+            }
         }
         $rooms = Room::getRooms();
         $result = array();

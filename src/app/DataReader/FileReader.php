@@ -7,7 +7,7 @@ Class FileReader implements Reader{
     private $filepath;
 
     public function __construct($filepath){
-        $this->filepath = $filepath;
+        $this->filepath = (isset($filepath))? $filepath : "";
     }
 
     public function read(){
