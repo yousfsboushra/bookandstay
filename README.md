@@ -38,4 +38,4 @@
 
 -   To change the input, just edit the `src/input.json` and refresh the page.
 
--   To run the unit test go to `src` folder and run command `composer test`
+-   To run the unit test go to `src` folder and run command `composer install` then `composer test`
