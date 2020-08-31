@@ -20,6 +20,8 @@
 
 -   For simplicity, I've added the api input inside `input.json`, so instead of using Postman, you can call it directly from the browser.
 
+-   To use file reader, the files must be placed inside `src` folder to be accessible to the docker environment.
+
 ## How to run the code
 
 -   Extract the files

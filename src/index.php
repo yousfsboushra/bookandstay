@@ -3,12 +3,15 @@ declare(strict_types=1);
 
 use App\Client;
 use App\DataSorter\PriceSorter;
+use App\DataFormatter\JsonFormatter;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$inputsJson = file_get_contents('input.json');
-$priceSorter = new PriceSorter();
-$client = new Client(json_decode($inputsJson), $priceSorter);
-$client->createReadersAndParsers();
-$rooms = $client->readAndFilterRooms();
-print json_encode($rooms);
+$jsonInput = file_get_contents('input.json');
+
+$sorter = new PriceSorter();
+$formatter = new JsonFormatter();
+
+$client = new Client($jsonInput, $sorter, $formatter);
+
+print $client->readFilterAndSortRooms();
