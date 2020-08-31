@@ -22,22 +22,24 @@ class Client{
     }
 
     public function createReadersAndParsers(){
-        foreach($this->inputs as $input){
-            switch($input->source){
-                case 'api':
-                    $this->readers[] = new \App\DataReader\ApiReader($input->endpoint, $input->headers);
-                break;
-                case 'file':
-                    $this->readers[] = new \App\DataReader\FileReader($input->path);
-                break;
-            }
-            switch($input->type){
-                case 'json1':
-                    $this->parsers[] = \App\Parser\JsonParser1::getInstance();
-                break;
-                case 'json2':
-                    $this->parsers[] = \App\Parser\JsonParser2::getInstance();
-                break;
+        if(!empty($this->inputs)){
+            foreach($this->inputs as $input){
+                switch($input->source){
+                    case 'api':
+                        $this->readers[] = new \App\DataReader\ApiReader($input->endpoint, $input->headers);
+                    break;
+                    case 'file':
+                        $this->readers[] = new \App\DataReader\FileReader($input->path);
+                    break;
+                }
+                switch($input->type){
+                    case 'json1':
+                        $this->parsers[] = \App\Parser\JsonParser1::getInstance();
+                    break;
+                    case 'json2':
+                        $this->parsers[] = \App\Parser\JsonParser2::getInstance();
+                    break;
+                }
             }
         }
     }
@@ -48,7 +50,12 @@ class Client{
             $data = $this->parsers[$index]->parseRooms($data, $this->inputs[$index]->name);
         }
         $rooms = Room::getRooms();
-        $sortedRooms = $this->sorter->sort($rooms);
-        return $this->formatter->format($sortedRooms);
+        $result = array();
+        if(!empty($rooms)){
+            $result = $this->sorter->sort($rooms);
+        }else{
+            $result = array("response" => "No rooms found");
+        }
+        return $this->formatter->format($result);
     }
 }

@@ -23,8 +23,8 @@ class PriceSorterTest extends TestCase{
 
         $this->assertIsArray($sortedRooms);
         $this->assertIsObject($sortedRooms[0]);
-        $this->assertEquals($sortedRooms[0]->getMinPrice(), 75.50);
-        $this->assertEquals($sortedRooms[1]->getMinPrice(), 100.00);
-        $this->assertEquals($sortedRooms[2]->getMinPrice(), 110.00);
+        $this->assertEquals(75.50, $sortedRooms[0]->getMinPrice());
+        $this->assertEquals(100.00, $sortedRooms[1]->getMinPrice());
+        $this->assertEquals(110.00, $sortedRooms[2]->getMinPrice());
     }
 }

@@ -1,6 +1,6 @@
 # Book and Stay
 
-## Assumptions and Decisions
+## Assumptions and Decisions:
 
 -   I decided not to use any framework because it is a simple API and most of the framework features will be overhead.
 
@@ -22,13 +22,14 @@
 
 -   To use file reader, the files must be placed inside `src` folder to be accessible to the docker environment.
 
-## How to run the code
+## How to run the code:
 
 -   Extract the files
 
 -   Open the extracted folder
 
 -   If port 9000 is not available on your device, you can change it in file `docker-compose.yml` line 6
+    _Please note that some test cases depend on the docker port, so they won't succeed_
 
 -   Build the docker: image using the command `docker-compose build`
 
@@ -37,3 +38,5 @@
 -   Now open your browser and go to http://localhost:9000
 
 -   To change the input, just edit the `src/input.json` and refresh the page.
+
+-   To run the unit test go to `src` folder and run command `composer test`
