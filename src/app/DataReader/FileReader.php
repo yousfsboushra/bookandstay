@@ -11,7 +11,7 @@ Class FileReader implements Reader{
     }
 
     public function read(){
-        $content = array();
+        $content = "";
         if (file_exists($this->filepath)) {
             $content = file_get_contents($this->filepath);
         }

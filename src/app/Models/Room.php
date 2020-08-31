@@ -2,8 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Models;
+use JsonSerializable;
 
-class Room{
+class Room implements JsonSerializable{
     private $name;
     private $code;
     private $hotel;
@@ -55,4 +56,16 @@ class Room{
         return $this->minPrice;
     }
 
+    public static function resetRooms(){
+        self::$instances = array();
+    }
+
+    public function jsonSerialize(){
+        return array(
+            'name' => $this->name,
+            'code' => $this->code,
+            'hotel' => $this->hotel,
+            'prices' => $this->prices
+        );
+    }
 }

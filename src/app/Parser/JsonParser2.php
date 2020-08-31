@@ -19,7 +19,6 @@ Class JsonParser2 implements Parser{
     }
 
     public function parseRooms($json, $sourceName){
-        $rooms = array();
         $data = json_decode($json);
         if(!empty($data->hotels)){
             foreach($data->hotels as $hotel){
@@ -31,6 +30,5 @@ Class JsonParser2 implements Parser{
                 }
             }
         }
-        return $rooms;
     }
 }

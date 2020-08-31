@@ -15,7 +15,7 @@ Class XmlParser1 implements Parser{
         return self::$instance;
     }
 
-    public function parseRooms($xml){ // Not complete
+    public function parseRooms($xml, $sourceName){ // Not complete
         $rooms = array();
         $json = json_encode(simplexml_load_string($xml));
         return $rooms;

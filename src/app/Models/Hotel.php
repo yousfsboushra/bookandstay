@@ -2,8 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Models;
+use JsonSerializable;
 
-class Hotel{
+class Hotel implements JsonSerializable{
     private $name;
     private $stars;
 
@@ -24,5 +25,12 @@ class Hotel{
 
     public function getName(){
         return $this->name;
+    }
+
+    public function jsonSerialize(){
+        return array(
+            'name' => $this->name,
+            'stars' => $this->stars
+        );
     }
 }
