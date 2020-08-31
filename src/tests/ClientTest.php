@@ -60,15 +60,15 @@ class ClientTest extends TestCase{
             {
                 "source": "api",
                 "name": "Booking.com",
-                "endpoint": "http://localhost:9000/apiReaderExample.json",
+                "endpoint": "https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s1/availability",
                 "headers": {},
-                "type": "json2"
+                "type": "json1"
             }
         ]';
         $client = new Client($jsonInput, $this->sorter, $this->formatter);
         $actual = $client->readFilterAndSortRooms();
         
-        $expected = '[{"name":"Single Bed","code":"SNG-RM","hotel":{"name":"Hotel C","stars":5},"prices":{"Booking.com":108}},{"name":"HALF BOARD","code":"HF-BD","hotel":{"name":"Hotel A","stars":4},"prices":{"Booking.com":142}},{"name":"Queen Room","code":"QUN-ROM","hotel":{"name":"Hotel B","stars":5},"prices":{"Booking.com":146.5}},{"name":"HALF BOARD","code":"HF-BOD","hotel":{"name":"Hotel B","stars":5},"prices":{"Booking.com":147}},{"name":"Double or Twin SUPERIOR","code":"DBL-TWN","hotel":{"name":"Hotel A","stars":4},"prices":{"Booking.com":153}},{"name":"Queen Room","code":"QN-RM","hotel":{"name":"Hotel A","stars":4},"prices":{"Booking.com":156}},{"name":"Double Room","code":"DBL-RM","hotel":{"name":"Hotel B","stars":5},"prices":{"Booking.com":167}},{"name":"FULL BOARD","code":"FUBOD","hotel":{"name":"Hotel C","stars":5},"prices":{"Booking.com":180}},{"name":"Luxury Room","code":"LUX-ROM","hotel":{"name":"Hotel C","stars":5},"prices":{"Booking.com":199}}]';
+        $expected = '[{"name":"","code":"SNGRM","hotel":{"name":"Hotel D","stars":5},"prices":{"Booking.com":115}},{"name":"","code":"HF-BOD","hotel":{"name":"Hotel B","stars":5},"prices":{"Booking.com":143}},{"name":"","code":"HF-BD","hotel":{"name":"Hotel A","stars":4},"prices":{"Booking.com":146}},{"name":"","code":"DBL-TWN","hotel":{"name":"Hotel A","stars":4},"prices":{"Booking.com":152}},{"name":"","code":"QUN-ROM","hotel":{"name":"Hotel B","stars":5},"prices":{"Booking.com":154.5}},{"name":"","code":"QN-RM","hotel":{"name":"Hotel A","stars":4},"prices":{"Booking.com":158}},{"name":"","code":"DBL-RM","hotel":{"name":"Hotel B","stars":5},"prices":{"Booking.com":165}},{"name":"","code":"POAROM","hotel":{"name":"Hotel D","stars":5},"prices":{"Booking.com":169}},{"name":"","code":"FU-BOD","hotel":{"name":"Hotel D","stars":5},"prices":{"Booking.com":176}}]';
         $this->assertJsonStringEqualsJsonString($expected, $actual);
     }
 

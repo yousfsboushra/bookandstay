@@ -7,8 +7,15 @@
     },
     {
         "source": "api",
+        "name": "Hotels.com",
+        "endpoint": "https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s1/availability",
+        "headers": {},
+        "type": "json1"
+    },
+    {
+        "source": "api",
         "name": "Booking.com",
-        "endpoint": "http://localhost/apiReaderExample.json",
+        "endpoint": "https://f704cb9e-bf27-440c-a927-4c8e57e3bad1.mock.pstmn.io/s2/availability",
         "headers": {},
         "type": "json2"
     }

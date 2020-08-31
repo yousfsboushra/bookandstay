@@ -29,7 +29,6 @@
 -   Open the extracted folder
 
 -   If port 9000 is not available on your device, you can change it in file `docker-compose.yml` line 6
-    _Please note that some test cases depend on the docker port, so they won't succeed_
 
 -   Build the docker: image using the command `docker-compose build`
 

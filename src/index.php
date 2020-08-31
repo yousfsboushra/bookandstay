@@ -14,4 +14,5 @@ $formatter = new JsonFormatter();
 
 $client = new Client($jsonInput, $sorter, $formatter);
 
+header("Content-Type: application/json");
 print $client->readFilterAndSortRooms();
