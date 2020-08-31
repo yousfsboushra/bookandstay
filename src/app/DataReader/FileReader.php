@@ -13,7 +13,12 @@ Class FileReader implements Reader{
     public function read(){
         $content = "";
         if (file_exists($this->filepath)) {
-            $content = file_get_contents($this->filepath);
+            $content = "";
+            $fh = fopen($this->filepath,'r');
+            while ($line = fgets($fh)) {
+                $content .= $line;
+            }
+            fclose($fh);
         }
         return $content;
     }
