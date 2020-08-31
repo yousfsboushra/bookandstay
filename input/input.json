@@ -2,7 +2,7 @@
     {
         "source": "file",
         "name": "Airbnb.com",
-        "path": "datasources/1.json",
+        "path": "input/datasources/1.json",
         "type": "json1"
     },
     {

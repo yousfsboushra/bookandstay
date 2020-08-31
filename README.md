@@ -18,9 +18,9 @@
 
 -   I have used a simple docker file to dockerize the application as a bonus task.
 
--   For simplicity, I've added the api input inside `input.json`, so instead of using Postman, you can call it directly from the browser.
+-   For simplicity, I've added the api input inside `input/input.json`, so instead of using Postman, you can call it directly from the browser.
 
--   To use file reader, the files must be placed inside `src` folder to be accessible to the docker environment.
+-   To use file reader, the files must be placed inside `input/datasources` folder to be accessible to the docker environment.
 
 ## How to run the code:
 
@@ -36,6 +36,6 @@
 
 -   Now open your browser and go to http://localhost:9000
 
--   To change the input, just edit the `src/input.json` and refresh the page.
+-   To change the input, just edit the `input/input.json` and refresh the page.
 
 -   To run the unit test go to `src` folder and run command `composer install` then `composer test`

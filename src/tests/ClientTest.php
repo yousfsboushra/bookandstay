@@ -22,7 +22,7 @@ class ClientTest extends TestCase{
             {
                 "source": "file",
                 "name": "Airbnb.com",
-                "path": "datasources/1.json",
+                "path": "tests/input/datasources/1.json",
                 "type": "json1"
             }
         ]';
@@ -38,13 +38,13 @@ class ClientTest extends TestCase{
             {
                 "source": "file",
                 "name": "Booking.com",
-                "path": "datasources/1.json",
+                "path": "tests/input/datasources/1.json",
                 "type": "json1"
             },
             {
                 "source": "file",
                 "name": "Airbnb.com",
-                "path": "datasources/2.json",
+                "path": "tests/input/datasources/2.json",
                 "type": "json2"
             }
         ]';

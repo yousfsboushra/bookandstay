@@ -11,7 +11,7 @@ class JsonParser2Test extends TestCase{
 
     public function setUp(): void{
         Room::resetRooms();
-        $reader = new FileReader("datasources/2.json");
+        $reader = new FileReader("tests/input/datasources/2.json");
         $this->data = $reader->read();
     }
 

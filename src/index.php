@@ -7,7 +7,7 @@ use App\DataFormatter\JsonFormatter;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$jsonInput = file_get_contents('input.json');
+$jsonInput = file_get_contents('input/input.json');
 
 $sorter = new PriceSorter();
 $formatter = new JsonFormatter();
